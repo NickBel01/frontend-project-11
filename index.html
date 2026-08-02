@@ -9,16 +9,26 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h1>RSS Reader</h1>
-        <form id="rss-form" class="row g-3">
-            <div class="col-auto">
-                <input type="text" class="form-control" id="url-input" placeholder="RSS link" required>
+    <div class="bg-light min-vh-100 d-flex flex-column">
+        <div class="bg-secondary text-white py-5 w-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <h1 class="mb-4 text-center">RSS Reader</h1>
+                        <form id="rss-form">
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-lg" id="url-input"
+                                    placeholder="RSS link" required>
+                                <button type="submit" class="btn btn-primary btn-lg">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary">Add</button>
-            </div>
-        </form>
+        </div>
+        <div class="container flex-grow-1 py-4">
+            <!-- Здесь будет контент -->
+        </div>
     </div>
     <script type="module" src="/src/index.js"></script>
 </body>
