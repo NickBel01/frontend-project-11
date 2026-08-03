@@ -1,13 +1,14 @@
 import { subscribe } from 'valtio/vanilla';
+import i18next from 'i18next';
 import state from './state.js';
 
 const input = document.getElementById('url-input');
 
-const renderError = (error) => {
-    input.classList.toggle('is-invalid', !!error);
+const renderError = (errorCode) => {
+    input.classList.toggle('is-invalid', !!errorCode);
     const feedback = document.querySelector('.invalid-feedback');
     if (feedback) {
-        feedback.textContent = error || '';
+        feedback.textContent = errorCode ? i18next.t(`errors.${errorCode}`) : '';
     }
 };
 
