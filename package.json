@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
-    "valtio": "^2.3.2",
+    "valtio": "^2.0.0",
     "yup": "^1.7.1"
   }
 }
