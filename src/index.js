@@ -14,9 +14,7 @@ const updateFeeds = () => {
                 );
                 state.posts.push(...newPosts);
             })
-            .catch(() => {
-                // Ошибка обновления — пропускаем
-            }),
+            .catch(() => { }),
     );
 
     Promise.all(promises)
@@ -49,13 +47,9 @@ initI18n().then(() => {
         validateUrl(url, state.feeds.map((feed) => feed.url))
             .then(() => loadFeed(url))
             .then(({ feed, posts }) => {
-                state.feeds.push({
-                    url,
-                    ...feed,
-                });
-
+                state.feeds.push({ url, ...feed });
                 state.posts.push(...posts);
-
+                state.form.status = 'loaded';
                 state.form.url = '';
                 state.form.error = null;
 

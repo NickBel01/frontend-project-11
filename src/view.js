@@ -19,6 +19,13 @@ const renderFeeds = () => {
     feedsContainer.innerHTML = '';
     if (state.feeds.length === 0) return;
 
+    if (state.form.status === 'loaded') {
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-success';
+        alert.textContent = 'RSS успешно загружен';
+        feedsContainer.prepend(alert);
+    }
+
     const title = document.createElement('h2');
     title.textContent = 'Фиды';
     const list = document.createElement('ul');
@@ -92,14 +99,14 @@ const renderModal = () => {
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">${post.title}</h5>
-          <button type="button" class="btn-close" id="modal-close"></button>
+          <button type="button" class="btn-close" id="modal-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <p>${post.description || ''}</p>
         </div>
         <div class="modal-footer">
           <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Читать полностью</a>
-          <button type="button" class="btn btn-secondary" id="modal-close-btn">Закрыть</button>
+          <button type="button" class="btn btn-secondary" id="modal-close-btn" data-bs-dismiss="modal">Закрыть</button>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ const state = proxy({
     form: {
         url: '',
         error: null,
+        status: 'filling',
     },
 });
 
