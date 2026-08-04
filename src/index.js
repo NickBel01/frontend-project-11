@@ -5,6 +5,26 @@ import { initView } from './view.js';
 import { validateUrl } from './utils/validate.js';
 import loadFeed from './api.js';
 
+const updateFeeds = () => {
+    const promises = state.feeds.map((feed) =>
+        loadFeed(feed.url)
+            .then(({ posts }) => {
+                const newPosts = posts.filter(
+                    (post) => !state.posts.some((p) => p.link === post.link),
+                );
+                state.posts.push(...newPosts);
+            })
+            .catch(() => {
+                // Ошибка обновления — пропускаем
+            }),
+    );
+
+    Promise.all(promises)
+        .finally(() => {
+            setTimeout(updateFeeds, 5000);
+        });
+};
+
 initI18n().then(() => {
     yup.setLocale({
         mixed: {
@@ -47,4 +67,6 @@ initI18n().then(() => {
                 state.form.error = err.message;
             });
     });
+
+    setTimeout(updateFeeds, 5000);
 });

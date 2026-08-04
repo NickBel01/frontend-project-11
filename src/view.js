@@ -64,7 +64,9 @@ const renderPosts = () => {
     const list = document.createElement('ul');
     list.className = 'list-group';
 
-    state.posts.forEach((post) => {
+    const sortedPosts = [...state.posts].reverse();
+
+    sortedPosts.forEach((post) => {
         const item = document.createElement('li');
         item.className = 'list-group-item';
 
